@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.neoranga55.androidconfchangeloaders.presenters.DemoContract;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 

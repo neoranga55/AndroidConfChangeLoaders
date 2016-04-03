@@ -1,4 +1,4 @@
-package com.neoranga55.androidconfchangeloaders;
+package com.neoranga55.androidconfchangeloaders.presenters;
 
 /**
  * Created by neoranga on 28/03/2016.
@@ -10,7 +10,7 @@ public interface DemoContract {
         void showCancelledRequest();
     }
 
-    interface UserActions {
+    interface UserActions<ViewActions> extends Presenter<ViewActions> {
         void loadButtonPressed();
         void cancelButtonPressed();
     }
