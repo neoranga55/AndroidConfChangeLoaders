@@ -10,7 +10,26 @@
     tools:context="com.neoranga55.androidconfchangeloaders.MainActivity">
 
     <TextView
+        android:id="@+id/tv_content"
+        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="Hello World!" />
+
+    <TextView
+        android:id="@+id/tv_loading"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Loading, please wait..." />
+
+    <TextView
+        android:id="@+id/tv_request_cancelled"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Request cancelled" />
 </RelativeLayout>
