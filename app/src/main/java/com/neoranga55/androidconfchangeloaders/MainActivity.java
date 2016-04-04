@@ -58,6 +58,21 @@ public class MainActivity extends AppCompatActivity implements DemoContract.View
     }
 
     @Override
+    protected void onStart() {
+        super.onStart(); // This will call the Loader and synchronously execute onStartLoading()->onLoadFinished()
+        // Also if it´s the first time the onCreateLoader() will be called before onStartLoading()
+        Log.i(TAG, "onStart-" + TAG);
+        mUserActions.onViewAttached(this); // Ready to use presenter
+    }
+
+    @Override
+    protected void onStop() {
+        mUserActions.onViewDetached();
+        super.onStop();
+        Log.i(TAG, "onStop-" + TAG);
+    }
+
+    @Override
     public void showLoading() {
         mContentText.setVisibility(View.GONE);
         mRequestCancelledText.setVisibility(View.GONE);
