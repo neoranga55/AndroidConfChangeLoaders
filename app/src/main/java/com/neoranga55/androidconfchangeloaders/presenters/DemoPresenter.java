@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 public class DemoPresenter implements DemoContract.UserActions<DemoContract.ViewActions> {
 
     private DemoContract.ViewActions mViewActions;
+    private Thread mSlowTask;
 
     @Override
     public void onViewAttached(DemoContract.ViewActions viewActions) {
@@ -27,7 +28,7 @@ public class DemoPresenter implements DemoContract.UserActions<DemoContract.View
     @Override
     public void loadButtonPressed() {
         mViewActions.showLoading();
-        AsyncTask.execute(new Runnable() {
+        mSlowTask = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -37,10 +38,14 @@ public class DemoPresenter implements DemoContract.UserActions<DemoContract.View
                 }
             }
         });
+        mSlowTask.start();
     }
 
     @Override
     public void cancelButtonPressed() {
+        if (mSlowTask != null) {
+            mSlowTask.interrupt();
+        }
         mViewActions.showCancelledRequest();
     }
 }
