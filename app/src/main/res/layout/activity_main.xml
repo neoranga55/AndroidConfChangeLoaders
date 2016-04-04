@@ -16,6 +16,14 @@
         android:layout_centerHorizontal="true"
         android:text="Load data slowly"/>
 
+    <Button
+        android:id="@+id/bt_cancel_load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/bt_load"
+        android:text="Cancel data loading"/>
+
     <TextView
         android:id="@+id/tv_content"
         android:layout_centerInParent="true"
@@ -30,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:layout_below="@id/tv_content"
         android:text="Loading, please wait..." />
 
     <TextView
@@ -38,5 +47,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:layout_below="@id/tv_loading"
         android:text="Request cancelled" />
 </RelativeLayout>

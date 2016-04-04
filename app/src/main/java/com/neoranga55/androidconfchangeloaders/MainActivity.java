@@ -104,4 +104,9 @@ public class MainActivity extends AppCompatActivity implements DemoContract.View
     @OnClick(R.id.bt_load) void loadDataPressed() {
         mUserActions.loadButtonPressed();
     }
+
+    @SuppressWarnings("unused")
+    @OnClick(R.id.bt_cancel_load) void cancelLoadDataPressed() {
+        mUserActions.cancelButtonPressed();
+    }
 }
