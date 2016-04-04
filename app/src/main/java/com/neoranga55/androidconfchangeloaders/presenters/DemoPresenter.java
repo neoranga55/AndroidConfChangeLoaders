@@ -1,5 +1,7 @@
 package com.neoranga55.androidconfchangeloaders.presenters;
 
+import android.os.AsyncTask;
+
 /**
  * Created by neoranga on 28/03/2016.
  */
@@ -25,7 +27,7 @@ public class DemoPresenter implements DemoContract.UserActions<DemoContract.View
     @Override
     public void loadButtonPressed() {
         mViewActions.showLoading();
-        new Runnable() {
+        AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -34,7 +36,7 @@ public class DemoPresenter implements DemoContract.UserActions<DemoContract.View
                 } catch (InterruptedException ignored) {
                 }
             }
-        }.run();
+        });
     }
 
     @Override

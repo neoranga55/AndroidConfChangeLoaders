@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.neoranga55.androidconfchangeloaders.presenters.DemoContract;
@@ -16,6 +17,7 @@ import com.neoranga55.androidconfchangeloaders.presenters.PresenterLoader;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements DemoContract.ViewActions {
 
@@ -81,9 +83,14 @@ public class MainActivity extends AppCompatActivity implements DemoContract.View
 
     @Override
     public void showContentLoaded() {
-        mLoadingText.setVisibility(View.GONE);
-        mRequestCancelledText.setVisibility(View.GONE);
-        mContentText.setVisibility(View.VISIBLE);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mLoadingText.setVisibility(View.GONE);
+                mRequestCancelledText.setVisibility(View.GONE);
+                mContentText.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override
@@ -91,5 +98,10 @@ public class MainActivity extends AppCompatActivity implements DemoContract.View
         mContentText.setVisibility(View.GONE);
         mLoadingText.setVisibility(View.GONE);
         mRequestCancelledText.setVisibility(View.VISIBLE);
+    }
+
+    @SuppressWarnings("unused")
+    @OnClick(R.id.bt_load) void loadDataPressed() {
+        mUserActions.loadButtonPressed();
     }
 }
