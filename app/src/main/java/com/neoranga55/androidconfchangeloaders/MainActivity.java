@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements DemoContract.View
             @Override
             public final Loader<DemoPresenter> onCreateLoader(int id, Bundle args) {
                 Log.i(TAG, "onCreateLoader");
+                // Create a loader that will call the DemoPresenter factory or return an existing
+                // presenter when the activity's onStart() event is triggered
                 return new PresenterLoader<>(MainActivity.this, new DemoPresenterFactory(), TAG);
             }
 
